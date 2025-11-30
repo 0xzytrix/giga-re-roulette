@@ -1,7 +1,6 @@
-import { useState } from "react"; // useEffect больше не нужен
+import { useState } from "react";
 import styles from "./styles.module.css";
 
-// Импорт картинок
 import img1 from "../../assets/images/octopuses/octo1.png";
 import img2 from "../../assets/images/octopuses/octo2.png";
 import img3 from "../../assets/images/octopuses/octo3.png";
@@ -26,11 +25,8 @@ interface OctopusData {
   style: OctoStyle;
 }
 
-// Выносим функцию генерации отдельно или оставляем внутри,
-// но вызываем её через lazy state
 const generateOctopuses = (): OctopusData[] => {
   return Array.from({ length: COUNT }, (_, i) => {
-    // Безопасная проверка на window для SSR (на всякий случай, хотя у нас Vite)
     const isMobile =
       typeof window !== "undefined" ? window.innerWidth < 600 : false;
 
@@ -63,9 +59,6 @@ const generateOctopuses = (): OctopusData[] => {
 };
 
 const FloatingOctopuses = () => {
-  // ИСПОЛЬЗУЕМ ЛЕНИВУЮ ИНИЦИАЛИЗАЦИЮ
-  // Передаем функцию generateOctopuses, а не её результат напрямую.
-  // React вызовет её 1 раз при старте.
   const [octopuses] = useState(() => generateOctopuses());
 
   return (

@@ -2,47 +2,48 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0;
+  padding: 0;
   position: relative;
   width: 100%;
+  height: 320px;
+  overflow: visible;
 }
 
 .wheelWrapper {
-  filter: drop-shadow(0 0 25px rgba(157, 78, 221, 0.4));
-  transform: scale(0.95);
+  filter: drop-shadow(0 0 20px rgba(157, 78, 221, 0.3));
+  transform: scale(0.75);
+  transform-origin: center center;
   transition: transform 0.3s;
 }
 
 .pointer {
   position: absolute;
-  top: 0px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 30px solid var(--re-purple);
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 24px solid var(--re-purple);
   z-index: 10;
-  filter: drop-shadow(0 0 10px var(--re-purple));
+  filter: drop-shadow(0 0 8px var(--re-purple));
 }
 
-/* Стили для пустого круглого колеса */
 .emptyWheel {
-  width: 300px; /* Размер должен примерно совпадать с размером библиотеки */
-  height: 300px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
   border: 2px solid var(--re-purple);
   background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 30px rgba(157, 78, 221, 0.2);
+  box-shadow: 0 0 20px rgba(157, 78, 221, 0.2);
   position: relative;
   animation: breathe 4s infinite ease-in-out;
 }
 
-/* Декоративная обводка */
 .emptyWheel::before {
   content: "";
   position: absolute;
@@ -89,7 +90,10 @@
 
 @media (min-width: 600px) {
   .emptyWheel {
-    width: 440px;
-    height: 440px;
+    width: 350px;
+    height: 350px;
+  }
+  .wheelWrapper {
+    transform: scale(0.85);
   }
 }

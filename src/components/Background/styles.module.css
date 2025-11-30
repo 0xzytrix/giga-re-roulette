@@ -6,28 +6,26 @@
   height: 100vh;
   z-index: -1;
   overflow: hidden;
-  background-color: var(--re-bg, #050505); /* Глубокий черный фон */
+  background-color: var(--re-bg, #050505);
 }
 
 .imageWrapper {
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: flex-end; /* Прижимаем к низу */
-  justify-content: center; /* Центрируем по горизонтали */
+  align-items: flex-end;
+  justify-content: center;
   padding-bottom: 0;
 }
 
 .image {
-  height: 90vh; /* Занимает 90% высоты экрана */
+  height: 90vh;
   width: auto;
-  max-width: 100%; /* Чтобы не вылезал за экран на мобильных */
+  max-width: 100%;
   object-fit: contain;
-  opacity: 0.4; /* Полупрозрачность, чтобы не мешать тексту */
-  filter: grayscale(100%) contrast(110%); /* ЧБ стиль */
+  opacity: 0.4;
+  filter: grayscale(100%) contrast(110%);
 
-  /* МАГИЯ: Плавное исчезновение краев */
-  /* Радиальный градиент: центр непрозрачный (black), края прозрачные */
   -webkit-mask-image: radial-gradient(
     ellipse at center bottom,
     black 30%,
@@ -39,11 +37,9 @@
     transparent 80%
   );
 
-  /* Плавная анимация появления (опционально) */
   animation: fadeIn 1.5s ease-out;
 }
 
-/* Фиолетовое свечение снизу */
 .bottomGlow {
   position: absolute;
   bottom: -10%;
@@ -58,10 +54,9 @@
   );
   filter: blur(60px);
   pointer-events: none;
-  z-index: 1; /* Поверх картинки, но под текстом */
+  z-index: 1;
 }
 
-/* Затемнение углов экрана для лучшей читаемости интерфейса */
 .vignette {
   position: absolute;
   inset: 0;
@@ -85,13 +80,11 @@
   }
 }
 
-/* Адаптация под мобильные устройства */
 @media (max-width: 600px) {
   .image {
-    height: 60vh; /* На мобилках картинка поменьше, чтобы не перекрывать кнопки */
-    opacity: 0.3; /* Чуть тусклее на мобилках */
+    height: 60vh;
+    opacity: 0.3;
 
-    /* На узких экранах делаем градиент более вытянутым */
     -webkit-mask-image: radial-gradient(
       ellipse at center bottom,
       black 40%,

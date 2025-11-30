@@ -35,7 +35,7 @@ const PlayerInput = ({ onAddPlayer, isLoading }: Props) => {
         className={styles.button}
         disabled={isLoading || !value}
       >
-        {isLoading ? "SEARCHING..." : "ADD GIGACHAD"}
+        {isLoading ? "Searching..." : "Add Gigachad"}
       </button>
     </form>
   );

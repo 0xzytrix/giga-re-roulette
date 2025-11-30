@@ -2,8 +2,8 @@
   position: fixed;
   inset: 0;
   overflow: hidden;
-  pointer-events: none; /* Чтобы сквозь них можно было кликать */
-  z-index: 0; /* Над фоном, но под контентом */
+  pointer-events: none;
+  z-index: 0;
 }
 
 .octopus {
@@ -12,8 +12,8 @@
   height: auto;
   left: var(--x-start);
   top: var(--y-start);
-  opacity: 0.2; /* Полупрозрачность */
-  filter: grayscale(80%) drop-shadow(0 0 10px rgba(157, 78, 221, 0.3)); /* Легкое свечение и ЧБ стиль */
+  opacity: 0.2;
+  filter: grayscale(80%) drop-shadow(0 0 10px rgba(157, 78, 221, 0.3));
   animation: float var(--duration) linear infinite;
   animation-delay: var(--delay);
   will-change: transform;
@@ -24,7 +24,6 @@
     transform: translate(0, 0) rotate(0deg);
   }
   50% {
-    /* Добавляем небольшое покачивание в середине пути */
     transform: translate(calc(var(--x-end) / 2), calc(var(--y-end) / 2))
       rotate(180deg);
   }

@@ -31,14 +31,13 @@ const RouletteWheel: React.FC<RouletteWheelProps> = ({
     setWheelData(generateData(players));
   }, [players]);
 
-  // Если игроков мало, показываем ПУСТОЕ КРУГЛОЕ КОЛЕСО
   if (players.length < 2) {
     return (
       <div className={styles.container}>
         <div className={styles.emptyWheel}>
           <div className={styles.emptyContent}>
             <span className={styles.emptyIcon}>+</span>
-            <p>ADD USERS</p>
+            <p>add 2 users</p>
           </div>
         </div>
       </div>

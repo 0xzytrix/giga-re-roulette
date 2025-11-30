@@ -2,7 +2,6 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import axios from "axios";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // CORS настройки
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
@@ -20,12 +19,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const cleanUser = username.replace("@", "").trim();
-
-  // URL профиля
   const twitterUrl = `https://x.com/${cleanUser}`;
-
-  // Используем Microlink API как прокси-парсинг
-  // Это бесплатно для небольших объемов и работает намного стабильнее на Vercel
   const API_URL = `https://api.microlink.io/?url=${encodeURIComponent(
     twitterUrl
   )}`;
@@ -39,17 +33,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const { data } = response;
 
-    // Microlink достает данные из мета-тегов
-    // data.title обычно содержит "Name (@username) on X"
-    // data.image?.url содержит аватарку
-
     let displayName = cleanUser;
-    // Пытаемся вытащить чистое имя из заголовка "Elon Musk (@elonmusk) / X"
     if (data.title && data.title.includes("(")) {
       displayName = data.title.split("(")[0].trim();
     }
 
-    // Проверяем, есть ли картинка
     const avatarUrl = data.image?.url ? data.image.url : null;
 
     if (!avatarUrl) {
@@ -65,8 +53,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   } catch (error) {
     console.error(`Parsing error for ${cleanUser}:`, (error as Error).message);
 
-    // === FALLBACK (ПЛАН Б) ===
-    // Если всё сломалось, генерируем красивую заглушку
     const fallbackAvatar = `https://ui-avatars.com/api/?name=${cleanUser}&background=9d4edd&color=fff&size=200&bold=true&length=2`;
 
     return res.status(200).json({

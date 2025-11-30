@@ -5,17 +5,16 @@
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-  align-items: center; /* Центрируем кнопку-текст */
+  align-items: center;
 }
 
-/* ... inputWrapper и другие стили остаются прежними ... */
 .inputWrapper {
   display: flex;
   align-items: center;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-color, #333);
   padding: 0.8rem 1.5rem;
-  border-radius: 9999px; /* Инпут оставляем круглым */
+  border-radius: 9999px;
   width: 100%;
   transition: border-color 0.2s;
 }
@@ -41,13 +40,12 @@
   outline: none;
 }
 
-/* Стили текстовой кнопки */
 .button {
-  background: transparent; /* Убираем фон */
+  background: transparent;
   border: none;
-  padding: 0.5rem 1rem; /* Оставляем отступы для удобства нажатия */
+  padding: 0.5rem 1rem;
 
-  color: #888; /* Цвет текста по умолчанию */
+  color: #888;
   font-family: var(--font-main);
   font-size: 0.9rem;
   font-weight: bold;
@@ -56,29 +54,26 @@
   cursor: pointer;
   transition: color 0.2s;
 
-  /* Убираем тени и трансформации, свойственные кнопкам */
   box-shadow: none;
   border-radius: 0;
 }
 
-/* При наведении текст становится фиолетовым */
 .button:hover:not(:disabled) {
   color: var(--re-purple, #9d4edd);
   background: transparent;
   transform: none;
   box-shadow: none;
-  text-decoration: underline; /* Опционально: подчеркивание */
+  text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-/* Активное состояние (когда текст введен, но мышь не наведена) */
 .form:focus-within .button,
 .button:not(:disabled) {
-  color: #fff; /* Если поле не пустое, делаем текст белым */
+  color: #fff;
 }
 
 .button:disabled {
-  opacity: 0; /* Скрываем кнопку, если инпут пустой (опционально) или делаем очень тусклой */
+  opacity: 0;
   cursor: default;
   color: transparent;
   pointer-events: none;

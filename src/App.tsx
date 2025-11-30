@@ -10,9 +10,9 @@ import RouletteWheel from "./components/Roulette";
 import PlayerList from "./components/PlayerList";
 import WinnerModal from "./components/WinnerModal";
 import FloatingOctopuses from "./components/FloatingOctopuses";
+import Footer from "./components/Footer";
 
 function App() {
-  // Состояние: false = стартовый экран, true = экран игры
   const [isGameStarted, setIsGameStarted] = useState(false);
 
   const [players, setPlayers] = useState<IPlayer[]>([]);
@@ -46,6 +46,7 @@ function App() {
     try {
       const newPlayer = await fetchXUserProfile(username);
       setPlayers((prev) => [...prev, newPlayer]);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       alert("Target not found.");
     } finally {
@@ -94,14 +95,12 @@ function App() {
         <Header />
 
         {!isGameStarted ? (
-          /* START SCREEN */
           <div className={styles.startScreen}>
             <button className={styles.bigStartButton} onClick={handleStartGame}>
-              REVEAL THE GIGACHAD
+              Reveal the Gigachad
             </button>
           </div>
         ) : (
-          /* GAME SCREEN (Fade in effect) */
           <div className={styles.gameContainer}>
             <div className={styles.wheelSection}>
               <RouletteWheel
@@ -120,7 +119,7 @@ function App() {
                 onClick={handleSpinClick}
                 disabled={isSpinning || activePlayers.length < 2}
               >
-                {isSpinning ? "CALCULATING..." : "ELIMINATE WEAKNESS"}
+                {isSpinning ? "Calculating..." : "Eliminate weakness"}
               </button>
             </div>
 
@@ -130,6 +129,8 @@ function App() {
       </div>
 
       {winner && <WinnerModal winner={winner} onReset={resetGame} />}
+
+      <Footer />
     </div>
   );
 }
