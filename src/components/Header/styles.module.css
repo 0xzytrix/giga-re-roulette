@@ -1,0 +1,37 @@
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  z-index: 10;
+  position: relative;
+}
+
+.title {
+  font-family: var(--font-mono); /* Space Mono */
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  margin: 0;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.accent {
+  color: var(--re-purple, #9d4edd);
+  font-style: italic;
+}
+
+.separator {
+  width: 60px;
+  height: 4px;
+  background: var(--re-purple, #9d4edd);
+  margin: 1.5rem auto 0;
+  box-shadow: 0 0 15px var(--re-purple);
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 5rem; /* Очень большой заголовок на десктопе */
+  }
+}

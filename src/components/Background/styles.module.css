@@ -1,0 +1,106 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  background-color: var(--re-bg, #050505); /* Глубокий черный фон */
+}
+
+.imageWrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end; /* Прижимаем к низу */
+  justify-content: center; /* Центрируем по горизонтали */
+  padding-bottom: 0;
+}
+
+.image {
+  height: 90vh; /* Занимает 90% высоты экрана */
+  width: auto;
+  max-width: 100%; /* Чтобы не вылезал за экран на мобильных */
+  object-fit: contain;
+  opacity: 0.4; /* Полупрозрачность, чтобы не мешать тексту */
+  filter: grayscale(100%) contrast(110%); /* ЧБ стиль */
+
+  /* МАГИЯ: Плавное исчезновение краев */
+  /* Радиальный градиент: центр непрозрачный (black), края прозрачные */
+  -webkit-mask-image: radial-gradient(
+    ellipse at center bottom,
+    black 30%,
+    transparent 80%
+  );
+  mask-image: radial-gradient(
+    ellipse at center bottom,
+    black 30%,
+    transparent 80%
+  );
+
+  /* Плавная анимация появления (опционально) */
+  animation: fadeIn 1.5s ease-out;
+}
+
+/* Фиолетовое свечение снизу */
+.bottomGlow {
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 50vh;
+  background: radial-gradient(
+    ellipse at bottom,
+    var(--re-purple-glow, rgba(157, 78, 221, 0.6)) 0%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1; /* Поверх картинки, но под текстом */
+}
+
+/* Затемнение углов экрана для лучшей читаемости интерфейса */
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 600px) {
+  .image {
+    height: 60vh; /* На мобилках картинка поменьше, чтобы не перекрывать кнопки */
+    opacity: 0.3; /* Чуть тусклее на мобилках */
+
+    /* На узких экранах делаем градиент более вытянутым */
+    -webkit-mask-image: radial-gradient(
+      ellipse at center bottom,
+      black 40%,
+      transparent 90%
+    );
+  }
+
+  .bottomGlow {
+    height: 40vh;
+    opacity: 0.8;
+  }
+}

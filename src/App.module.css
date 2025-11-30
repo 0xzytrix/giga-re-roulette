@@ -1,0 +1,148 @@
+.appContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Центрируем всё по вертикали */
+  overflow-x: hidden;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 5; /* Поверх фона */
+  width: 100%;
+  max-width: 900px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Start Screen */
+.startScreen {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeUp 0.8s ease-out;
+}
+
+.bigStartButton {
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-mono, "Courier New");
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 1.5rem 4rem;
+  border: 2px solid var(--re-purple, #9d4edd);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border-radius: 9999px; /* Полное закругление */
+  box-shadow: 0 0 20px rgba(157, 78, 221, 0.2);
+}
+
+.bigStartButton:hover {
+  background: var(--re-purple, #9d4edd);
+  color: #000;
+  box-shadow: 0 0 40px rgba(157, 78, 221, 0.6);
+  transform: scale(1.05);
+}
+
+/* Кнопка действия (Eliminate) */
+.actionButton {
+  background: var(--re-purple);
+  color: white;
+  border: none;
+  padding: 1rem 4rem;
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+
+  /* Прямоугольник с небольшим скруглением */
+  border-radius: 12px;
+
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(157, 78, 221, 0.3);
+}
+
+.actionButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(157, 78, 221, 0.5);
+  background: #b062ea;
+}
+
+.actionButton:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.actionButton:disabled {
+  background: #333;
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.startSubtext {
+  margin-top: 2rem;
+  color: #888;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  text-align: center;
+  max-width: 400px;
+}
+
+/* Game Interface */
+.gameContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  animation: fadeIn 1s ease forwards;
+}
+
+.wheelSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.controlsSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .bigStartButton {
+    font-size: 2.5rem;
+    padding: 2rem 5rem;
+  }
+}

@@ -1,0 +1,85 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  align-items: center; /* Центрируем кнопку-текст */
+}
+
+/* ... inputWrapper и другие стили остаются прежними ... */
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color, #333);
+  padding: 0.8rem 1.5rem;
+  border-radius: 9999px; /* Инпут оставляем круглым */
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.inputWrapper:focus-within {
+  border-color: var(--re-purple, #9d4edd);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.prefix {
+  color: var(--re-purple, #9d4edd);
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.input {
+  background: transparent;
+  border: none;
+  color: var(--text-primary, #fff);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  width: 100%;
+  outline: none;
+}
+
+/* Стили текстовой кнопки */
+.button {
+  background: transparent; /* Убираем фон */
+  border: none;
+  padding: 0.5rem 1rem; /* Оставляем отступы для удобства нажатия */
+
+  color: #888; /* Цвет текста по умолчанию */
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  /* Убираем тени и трансформации, свойственные кнопкам */
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* При наведении текст становится фиолетовым */
+.button:hover:not(:disabled) {
+  color: var(--re-purple, #9d4edd);
+  background: transparent;
+  transform: none;
+  box-shadow: none;
+  text-decoration: underline; /* Опционально: подчеркивание */
+  text-underline-offset: 4px;
+}
+
+/* Активное состояние (когда текст введен, но мышь не наведена) */
+.form:focus-within .button,
+.button:not(:disabled) {
+  color: #fff; /* Если поле не пустое, делаем текст белым */
+}
+
+.button:disabled {
+  opacity: 0; /* Скрываем кнопку, если инпут пустой (опционально) или делаем очень тусклой */
+  cursor: default;
+  color: transparent;
+  pointer-events: none;
+}
