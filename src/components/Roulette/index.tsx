@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Wheel } from "react-custom-roulette";
-import "react-roulette-pro/dist/index.css";
 import type { IPlayer } from "../../types";
 import styles from "./styles.module.css";
 
