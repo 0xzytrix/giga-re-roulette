@@ -46,7 +46,6 @@ const RouletteWheel: React.FC<RouletteWheelProps> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.pointer} />
       <div className={styles.wheelWrapper}>
         <Wheel
           mustStartSpinning={mustSpin}

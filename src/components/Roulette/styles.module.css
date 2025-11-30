@@ -16,20 +16,6 @@
   transition: transform 0.3s;
 }
 
-.pointer {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-top: 24px solid var(--re-purple);
-  z-index: 10;
-  filter: drop-shadow(0 0 8px var(--re-purple));
-}
-
 .emptyWheel {
   width: 260px;
   height: 260px;
